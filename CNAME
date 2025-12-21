@@ -1,0 +1,62 @@
+on GitHub Pages
+Copilot Chat
+Hosting a domain on GitHub Pages
+You said: Please help me with the code to
+Please help me with the code to use that will allow me to host and deploy my domain on GitHub for free
+Copilot said: Great — below is a minimal, ready-to-publish
+Great — below is a minimal, ready-to-publish static site plus step-by-step instructions to host it on GitHub Pages for free and serve it at your custom domain 1989shack.com.
+
+What I provide:
+
+ready-to-use files (index.html, styles.css, script.js, CNAME, README.md)
+git/GitHub steps (including gh CLI option)
+DNS records you must add at your domain registrar
+verification / troubleshooting notes
+Files (copy these into a new repository — see steps below)
+
+index.html
+v1
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>1989 Shack</title>
+styles.css
+v1
+:root{
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --accent:#0077cc;
+  --accent-hover:#005fa3;
+  --muted:#6b7280;
+script.js
+v1
+// script.js - minimal behavior for the button + modal
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('actionBtn');
+  const modal = document.getElementById('modal');
+  const modalClose = document.getElementById('modalClose');
+
+CNAME
+v1
+1989shack.com
+
+README.md
+v1
+# 1989shack (GitHub Pages site)
+
+This repository contains a small static site to be hosted on GitHub Pages. It uses plain HTML/CSS/JS.
+
+Files:
+- `index.html` — main page
+Deployment steps summarized (quick):
+
+Create repo named 1989shack.github.io (recommended) or any repo and enable Pages from main branch.
+Commit & push the files above.
+Add DNS records at your registrar:
+A records (apex): 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+CNAME for www → 1989shack.github.io
+Ensure the CNAME file contains "1989shack.com" (already included).
+Wait for propagation; GitHub will provide TLS.
+If you want, I can:
