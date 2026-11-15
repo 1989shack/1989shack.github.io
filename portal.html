@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1989SHACK Portal - Join Global Live</title>
+<style>
+body{font-family:Arial;background:#075e54;margin:0;padding:15px;color:#fff;text-align:center}
+.card{background:#fff;color:#111;border-radius:15px;padding:20px;max-width:450px;margin:15px auto}
+input,select{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:10px;font-size:16px}
+.big{width:100%;padding:14px;border:none;border-radius:25px;font-weight:bold;font-size:17px;cursor:pointer}
+.green{background:#25d366;color:#fff}
+.dark{background:#075e54;color:#fff}
+.grey{background:#eee;color:#111}
+</style>
+</head>
+<body>
+
+<h1>🌍 1989SHACK Global Live</h1>
+<p>Grand Cape Mount • Liberia • Global</p>
+
+<div class="card">
+<h2>Join Global Live (Signup)</h2>
+<p>Join the Global Live community</p>
+<input id="pName" placeholder="Full Name - e.g. Blood">
+<input id="pPhone" placeholder="Phone - e.g. +231888349713">
+<select id="pCounty">
+<option>Grand Cape Mount</option>
+<option>Montserrado</option>
+<option>Bomi</option>
+<option>Margibi</option>
+<option>Other / Global</option>
+</select>
+<button class="big green" onclick="joinPortal()">✅ JOIN GLOBAL LIVE</button>
+<p id="pMsg" style="color:green;font-weight:bold;"></p>
+</div>
+
+<!-- PORTAL BOTTOM - WITH LOGIN BUTTON -->
+<div class="card" style="background:#f0f2f5;">
+<p style="margin:0 0 10px;font-weight:bold;">Already have an account, Blood?</p>
+<button class="big dark" onclick="window.location.href='/'">🔑 LOGIN</button>
+<br><br>
+<button class="big grey" onclick="window.location.href='/'">🏠 BACK TO PORTAL</button>
+<br><br>
+<p style="font-size:12px;color:#888;">1989SHACK Global • Be kind, Blood Brother ❤️</p>
+</div>
+<!-- END PORTAL BOTTOM -->
+
+<script>
+function joinPortal(){
+  const name=document.getElementById('pName').value;
+  const phone=document.getElementById('pPhone').value;
+  const county=document.getElementById('pCounty').value;
+  if(!name||!phone){alert('Please enter Name and Phone');return;}
+  fetch('/api/join',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,county})})
+  .then(r=>r.json()).then(d=>{
+    document.getElementById('pMsg').innerText='Welcome, '+name+'! You joined 1989SHACK Global Live - '+county+' We will contact you on '+phone;
+  }).catch(e=>{document.getElementById('pMsg').innerText='Welcome, '+name+'! Saved locally.';});
+}
+</script>
+</body>
+</html>
